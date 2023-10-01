@@ -1,0 +1,29 @@
+name: 'Plugin Updater'
+description: 'Plugin Updater helps Intellij IDEA plugin developers to be notified when a new Intellij platform version needs to be supported'
+inputs:
+  product:
+    description: 'The name of the IDE'
+    required: true
+    default: 'IntelliJ IDEA'
+  channel-id:
+    description: 'The IDE channel (EAP, RELEASE, etc.)'
+    required: true
+    default: 'IC-IU-RELEASE-licensing-RELEASE'
+  build-number-format:
+    description: 'Build number format'
+    required: true
+    default: 'FULL' # Can be ['FULL', 'SHORT', 'HUMAN_READABLE']
+  until-build-location:
+    description: 'Location of untilBuild value'
+    required: true
+    default: 'build.gradle' # E.g. 'build.gradle.kts', '../gradle.properties'
+  until-build-property:
+    description: 'Name of the untilBuild property'
+    required: false
+    default: 'plugin.until.build'
+outputs:
+  new-build:
+    description: 'The new available build'
+runs:
+  using: 'node16'
+  main: 'action/dist/index.js'

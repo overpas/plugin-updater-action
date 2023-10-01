@@ -1,0 +1,30 @@
+[versions]
+kotlin = "1.9.10"
+kotlin-github-action = "1.6.0"
+kotlin-wrappers = "1.0.0-pre.624"
+semver = "1.4.2"
+ktor = "2.3.4"
+clikt = "4.2.0"
+okio = "3.5.0"
+xmlutil = "0.86.2"
+
+[libraries]
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
+kotlin-github-action = { group = "com.github.rnett.ktjs-github-action", name = "kotlin-js-action", version.ref = "kotlin-github-action" }
+kotlin-wrappers-browser = { group = "org.jetbrains.kotlin-wrappers", name = "kotlin-browser", version.ref = "kotlin-wrappers" }
+semver = { group = "io.github.z4kn4fein", name = "semver", version.ref = "semver" }
+ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
+ktor-client-js = { group = "io.ktor", name = "ktor-client-js", version.ref = "ktor" }
+ktor-client-okhttp = { group = "io.ktor", name = "ktor-client-okhttp", version.ref = "ktor" }
+ktor-client-content-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
+clikt = { group = "com.github.ajalt.clikt", name = "clikt", version.ref = "clikt" }
+okio = { group = "com.squareup.okio", name = "okio", version.ref = "okio" }
+okio-nodefilesystem = { group = "com.squareup.okio", name = "okio-nodefilesystem", version.ref = "okio" }
+xmlutil-core = { group = "io.github.pdvrieze.xmlutil", name = "core", version.ref = "xmlutil" }
+xmlutil-serialization = { group = "io.github.pdvrieze.xmlutil", name = "serialization", version.ref = "xmlutil" }
+xmlutil-serialutil = { group = "io.github.pdvrieze.xmlutil", name = "serialutil", version.ref = "xmlutil" }
+
+[plugins]
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-github-action = { id = "com.github.rnett.ktjs-github-action", version.ref = "kotlin-github-action" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

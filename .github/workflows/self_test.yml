@@ -1,0 +1,23 @@
+name: Self-test
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  self-test:
+    name: Self-test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Check for Intellij Platform updates
+        uses: overpas/plugin-updater-action@v0.1
+        with:
+          product: 'IntelliJ IDEA'
+          channel-id: 'IC-IU-RELEASE-licensing-RELEASE'
+          build-number-format: 'FULL'
+          until-build-location: '../gradle.properties'
+          until-build-property: 'plugin.until.build'
