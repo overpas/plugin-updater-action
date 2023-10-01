@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Check for Intellij Platform updates
-        uses: overpas/plugin-updater-action@v0.1
+        uses: overpas/plugin-updater-action@0.1
         with:
           product: 'IntelliJ IDEA'
           channel-id: 'IC-IU-RELEASE-licensing-RELEASE'
