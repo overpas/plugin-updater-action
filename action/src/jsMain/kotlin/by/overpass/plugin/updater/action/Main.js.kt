@@ -47,7 +47,12 @@ internal actual suspend fun tryUpdateCurrentBuild(
     untilBuildProperty: String,
     latestBuild: Version,
 ) {
+    console.log("runId = ${github.context.runId}")
+    console.log("ref = ${github.context.ref}")
     with(exec) {
+        val name = execShellAndCapture("git config user.name").stdout
+        val email = execShellAndCapture("git config user.email").stdout
+        console.log("Github user name: $name, email: $email")
         execShell("git checkout \"plugin-updater-${github.context.runId}\"")
         editFile(untilBuildLocation, untilBuildProperty, latestBuild)
         execShell("git add .")
