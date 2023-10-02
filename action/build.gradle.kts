@@ -50,3 +50,16 @@ kotlin {
 }
 
 generateAutoBuildWorkflow(javaVersion = properties["jvm.version"].toString())
+
+tasks.register("replaceEvalRequireWithRequire") {
+    doLast {
+        val indexJsFile = File(project.projectDir, "/dist/index.js")
+        val content = indexJsFile.readText()
+        val newContent = content.replace("eval(\"require\")", "require")
+        indexJsFile.writeText(newContent)
+    }
+}
+
+tasks.named("build") {
+    finalizedBy("replaceEvalRequireWithRequire")
+}
