@@ -32,6 +32,7 @@ kotlin {
                 implementation(libs.kotlin.github.action)
                 implementation(libs.ktor.client.js)
                 implementation(libs.okio.nodefilesystem)
+                implementation(npm("abort-controller", "3.0.0"))
             }
         }
         val jvmMain by getting {
