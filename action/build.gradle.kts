@@ -32,6 +32,7 @@ kotlin {
                 implementation(libs.kotlin.github.action)
                 implementation(libs.ktor.client.js)
                 implementation(libs.okio.nodefilesystem)
+                implementation(npm("abort-controller", "3.0.0"))
             }
         }
         val jvmMain by getting {
@@ -50,3 +51,16 @@ kotlin {
 }
 
 generateAutoBuildWorkflow(javaVersion = properties["jvm.version"].toString())
+
+tasks.register("replaceEvalRequireWithRequire") {
+    doLast {
+        val indexJsFile = File(project.projectDir, "/dist/index.js")
+        val content = indexJsFile.readText()
+        val newContent = content.replace("eval(\"require\")", "require")
+        indexJsFile.writeText(newContent)
+    }
+}
+
+tasks.named("build") {
+    finalizedBy("replaceEvalRequireWithRequire")
+}
